@@ -1,0 +1,38 @@
+@startuml
+
+(*) --> "
+operator: Developer
+----
+checkout branch: develop -> feature1
+coding
+push: feature1 -> feature1
+coding
+push: feature1 -> feature1
+coding
+...
+...
+push: feature1 -> feature1"
+--> "
+operator: Developer
+----
+submit merge: feature1 -> develop"
+--> "
+operator: Merge Team
+----
+code review
+....
+merge: feature1 -> develop
+....
+delete branch feature1"
+--> "operator: Automatic
+----
+unit test
+....
+api test
+....
+ui test
+....
+other"
+--> (*)
+
+@enduml
