@@ -14,7 +14,4 @@ echo step2'''
       }
     }
   }
-  environment {
-    Env = 'QA'
-  }
 }
