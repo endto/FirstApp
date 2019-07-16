@@ -1,17 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('step 1') {
+    stage('Build') {
       steps {
         sh '''# step 1
-echo step1'''
-        input 'Evn'
+echo build'''
       }
     }
-    stage('step 2') {
+    stage('Test') {
       steps {
         sh '''# step 2
 echo step2'''
+      }
+    }
+    stage('Deploy') {
+      steps {
+        archiveArtifacts 'README.md'
       }
     }
   }
