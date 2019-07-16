@@ -5,6 +5,7 @@ pipeline {
       steps {
         sh '''# step 1
 echo step1'''
+        input 'Evn'
       }
     }
     stage('step 2') {
