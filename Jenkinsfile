@@ -19,4 +19,9 @@ echo step2'''
       }
     }
   }
+  post {
+    always {
+        archiveArtifacts artifacts: 'README.md', fingerprint: true
+    }
+  }
 }
