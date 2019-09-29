@@ -1,15 +1,20 @@
 pipeline {
-  agent {
-    docker {
-      image 'nginx'
-    }
-
-  }
+  agent any
   stages {
     stage('Build') {
-      steps {
-        sh '''# step 1
+      parallel {
+        stage('parallel3') {
+          steps {
+            sh '''# step 1
 echo build'''
+          }
+        }
+        stage('parallel2') {
+          steps {
+            sh 'echo \'parallel\''
+            sh 'echo "parallel2_1"'
+          }
+        }
       }
     }
     stage('Test') {
@@ -18,11 +23,9 @@ echo build'''
 echo step2'''
       }
     }
-    stage('Deploy') {
-      steps {
-        archiveArtifacts 'README.md'
-      }
-    }
+  }
+  environment {
+    label = 'jenksin-qa_e2e'
   }
   post {
     always {
